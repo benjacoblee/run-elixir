@@ -25,6 +25,9 @@ dets_file_path = String.to_charlist("./state.dets")
 :dets.delete(:state, :messi)
 :dets.lookup(:state, :messi) |> IO.inspect(label: 3)
 
+# Walk through the table
+:dets.traverse(:state, fn x -> IO.inspect(x) end)
+
 # Flush the changes to disk. A file is auto-flushed every 3 minutes by default.
 # You can change this interval with the `auto_save: 1_000` option in `:dets.open_file/2`
 :dets.sync(:state)
